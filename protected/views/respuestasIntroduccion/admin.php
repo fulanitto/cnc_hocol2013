@@ -3,14 +3,14 @@
 /* @var $model RespuestasIntroduccion */
 
 $this->breadcrumbs=array(
-	'Respuestas Introduccions'=>array('index'),
-	'Reporte',
+	'Reportes'=>array('index'),
+	'Avance',
 );
 
-$this->menu=array(
-	array('label'=>'<i class="icon-th-list"></i> Listar', 'url'=>array('index')),
-	array('label'=>'<i class="icon-plus-sign"></i> Crear', 'url'=>array('create')),
-);
+// $this->menu=array(
+// 	array('label'=>'<i class="icon-th-list"></i> Listar', 'url'=>array('index')),
+// 	array('label'=>'<i class="icon-plus-sign"></i> Crear', 'url'=>array('create')),
+// );
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Reporte Respuestas Introduccions</h1>
+<h1>Avance</h1>
 
 <a href="<?php echo Yii::app()->createUrl('respuestasIntroduccion/avanceExcel'); ?>"><img src="<?php echo Yii::app()->baseUrl; ?>/images/Office-Excel-icon.png" alt="Exportar a Excel" class="pull-right ttp" title="Exportar a excel"/></a>
 <br/>

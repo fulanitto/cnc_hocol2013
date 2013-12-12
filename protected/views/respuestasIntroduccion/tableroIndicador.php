@@ -3,8 +3,8 @@
 /* @var $model Respuesta */
 
 $this->breadcrumbs=array(
-	'Respuestas'=>array('index'),
-	'Tablero de indicador',
+	'Reportes'=>array('index'),
+	'Indicador',
 	);
 
 // $this->menu=array(
@@ -12,6 +12,7 @@ $this->breadcrumbs=array(
 // 	array('label'=>'<i class="icon-plus-sign"></i> Crear', 'url'=>array('create')),
 // 	);
 	?>
+	<h1>Indicador</h1>
 	<?php 
 	$gerencias=Obrero::getGerencias();
 	$totales=array_values($totales->attributes);
