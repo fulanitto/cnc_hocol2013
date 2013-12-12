@@ -8,6 +8,7 @@
 			<tr>
 				<th><?php echo $labels['id_con']; ?></th>
 				<th><?php echo $labels['nom_contacto']; ?></th>
+				<th><?php echo $labels['email']; ?></th>
 				<th><?php echo $labels['f1']; ?></th>
 				<th><?php echo $labels['f2']; ?></th>
 				<th><?php echo $labels['f3']; ?></th>
@@ -27,6 +28,7 @@
 				echo "<tr ".$style.">";
 				echo "<td class='id_con'>".$m->id_con."</td>";
 				echo "<td class='nom_contacto'>".$m->nom_contacto."</td>";
+				echo "<td class='email'>".$m->email."</td>";
 				echo "<td class='f1'>".$m->f1."</td>";
 				echo "<td class='f2'>".$m->f2."</td>";
 				echo "<td class='f3'>".$m->f3."</td>";

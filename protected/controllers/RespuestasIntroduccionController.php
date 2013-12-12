@@ -32,7 +32,7 @@ class RespuestasIntroduccionController extends Controller
                         	'expression' => 'Yii::app()->user->checkAccess("Cliente")',
                         	),
                         array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                        	'actions' => array('Avance', 'AvanceExcel', "TableroControl"),
+                        	'actions' => array('Avance', 'AvanceExcel', "TableroControl", 'Pendientes', 'AvanceExcelPendientes'),
                         	'expression' => 'Yii::app()->user->checkAccess("Admin2")',
                         	),
                         array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -189,7 +189,7 @@ class RespuestasIntroduccionController extends Controller
 		}else{
 			$c=new CDbCriteria;
 			$c->compare('id_con',$user->id);
-			for ($i=1; $i <=6; $i++) { 
+			for ($i=1; $i <=6; $i++) {
 				$form='p01_'.$i.'_'.$i;
 				if($intro->$form){
 					//obtener la encuesta
@@ -213,7 +213,7 @@ class RespuestasIntroduccionController extends Controller
 						$encuesta=RespuestasForm6::model()->find($c);
 						break;
 					}
-					if(empty($encuesta)){	
+					if(empty($encuesta)){
 						//redireccionar
 						$url='RespuestasForm'.$i.'/create';
 						$this->redirect(array($url));
@@ -221,7 +221,7 @@ class RespuestasIntroduccionController extends Controller
 				}
 			}
 			$despedida=RespuestasDespedida::model()->find($c);
-			if(empty($despedida)){	
+			if(empty($despedida)){
 				//redireccionar
 				$this->redirect(array('RespuestasDespedida/create'));
 			}
@@ -246,16 +246,55 @@ class RespuestasIntroduccionController extends Controller
 	/**
 	 * Action para ver el avance de las encuestas
 	*/
+	public function actionPendientes(){
+		$model=new ViewRespuesta2('search');
+		$model->unsetAttributes();  // clear any default values
+		$model->tsinterminar = '> 0';
+		if(isset($_GET['ViewRespuesta2']))
+			$model->attributes=$_GET['ViewRespuesta2'];
+
+
+
+		$this->render('admin',array(
+			'model'				=>	$model,
+			'excel_pendientes' 	=> 	true
+			));
+	}
+
+	/**
+	 * Action para ver el avance de las encuestas
+	*/
 	public function actionAvanceExcel(){
 		$model= ViewRespuesta2::model()->findAll();
 		$fileName='Hocol - Avance de encuestas '.date('Y-m-d H:i:s').'.xls';
 		Yii::app()->request->sendFile(
 			$fileName,
 			$this->renderPartial(
-				'excelRealizadas', 
+				'excelRealizadas',
 				array(
 					'model'=>$model,
-					), 
+					),
+				true)
+			);
+	}
+
+	/**
+	 * Action para ver el avance de las encuestas pendientes
+	*/
+	public function actionAvanceExcelPendientes(){
+
+		$c = new CDbCriteria;
+		$c->compare('tsinterminar',' >0 ');
+
+		$model= ViewRespuesta2::model()->findAll( $c );
+		$fileName='Hocol - Encuestas pendientes '.date('Y-m-d H:i:s').'.xls';
+		Yii::app()->request->sendFile(
+			$fileName,
+			$this->renderPartial(
+				'excelRealizadas',
+				array(
+					'model'=>$model,
+					),
 				true)
 			);
 	}

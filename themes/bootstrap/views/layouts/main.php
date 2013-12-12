@@ -87,7 +87,8 @@
                       $this->widget('zii.widgets.CMenu', array(
                         'items' => array(
                           array('label' => 'Avance', 'url' => array('/RespuestasIntroduccion/avance')),
-                          array('label' => 'Avance', 'url' => array('/RespuestasIntroduccion/TableroControl')),
+                          array('label' => 'Indicador', 'url' => array('/RespuestasIntroduccion/TableroControl')),
+                          array('label' => 'Pendietes', 'url' => array('/RespuestasIntroduccion/pendientes')),
                           ),
                         'htmlOptions' => array('class' => 'dropdown-menu'),
                         ));

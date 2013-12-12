@@ -27,8 +27,22 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Reporte Respuestas Introduccions</h1>
+<?php
+	if( isset( $excel_pendientes ) ){
+		if( $excel_pendientes === true ){
+?>
 
-<a href="<?php echo Yii::app()->createUrl('respuestasIntroduccion/avanceExcel'); ?>"><img src="<?php echo Yii::app()->baseUrl; ?>/images/Office-Excel-icon.png" alt="Exportar a Excel" class="pull-right ttp" title="Exportar a excel"/></a>
+<a href="<?php echo Yii::app()->createUrl('respuestasIntroduccion/avanceExcelPendientes'); ?>">
+
+<?php } ?>
+<?php } else { ?>
+	<a href="<?php echo Yii::app()->createUrl('respuestasIntroduccion/avanceExcel'); ?>">
+<?php } ?>
+
+
+	<img src="<?php echo Yii::app()->baseUrl; ?>/images/Office-Excel-icon.png" alt="Exportar a Excel" class="pull-right ttp" title="Exportar a excel"/>
+
+</a>
 <br/>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'itemsCssClass' => 'table table-striped table-bordered table-hover dataTable',
@@ -38,6 +52,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'id_con',
 		'nom_contacto',
+		'email',
 		'f1',
 		'f2',
 		'f3',

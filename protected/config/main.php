@@ -58,8 +58,8 @@ return array(
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=encues2_hocol',
             'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'Asdf1234', /* localhost */
+            'username' => 'encues2_webmaste',
+            'password' => 'cnc_web', /* localhost */
 //           'password' => '20cnc11',/*192.168.0.18*/
 //            'username' => 'encues2_webmaste',
 //            'password' => 'cnc_web',

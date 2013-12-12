@@ -51,7 +51,7 @@ class ViewRespuesta2 extends CActiveRecord
 			array('f1, f2, f3, f4, f5, f6', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id_con, nom_contacto, f1, f2, f3, f4, f5, f6, paraHacer, tsinterminar, tterminados', 'safe', 'on'=>'search'),
+			array('id_con, nom_contacto, email, f1, f2, f3, f4, f5, f6, paraHacer, tsinterminar, tterminados', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +74,7 @@ class ViewRespuesta2 extends CActiveRecord
 		return array(
 			'id_con' => 'Contacto',
 			'nom_contacto' => 'Nombre Contacto',
+			'email' => 'Email',
 			'f1' => 'Gerencia de estratégia',
 			'f2' => 'Gerencia administrativa',
 			'f3' => 'Gerencia financiera',
@@ -99,6 +100,7 @@ class ViewRespuesta2 extends CActiveRecord
 
 		$criteria->compare('id_con',$this->id_con);
 		$criteria->compare('nom_contacto',$this->nom_contacto,true);
+		$criteria->compare('email',$this->email,true);
 		$criteria->compare('f1',$this->f1,true);
 		$criteria->compare('f2',$this->f2,true);
 		$criteria->compare('f3',$this->f3,true);
