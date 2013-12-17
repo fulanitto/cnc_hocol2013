@@ -46,10 +46,3 @@ build/config/buildinfo.properties
 
 #sublime text
 sftp-config.json
-
-#Yii
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
